@@ -7,7 +7,6 @@ export interface Target{
 }
 const createHandler = <T>(path: string[] = [],listener:(args:Target)=>void) => ({
   get: (target: T, key: keyof T): any => {
-    if (key === 'isProxy') return true;
     if (typeof target[key] === 'object' && target[key] != null )
       return new Proxy(
         target[key],

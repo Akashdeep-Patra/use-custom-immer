@@ -8,7 +8,7 @@ export default function App() {
       firstName: "Akashdeep",
       lastName: "Patra",
       count: 2,
-      arr: [1, 2, 3]
+      arr: [1, 2]
     }
   });
 
@@ -16,7 +16,7 @@ export default function App() {
     setValue((prev) => {
       prev.count += 1;
       prev.name.count += 1;
-      prev.name.arr.push(99);
+      prev.name.arr.push(prev.name.arr.length + 1);
     });
   };
   useEffect(() => {
