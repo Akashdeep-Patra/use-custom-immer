@@ -2,7 +2,7 @@ import "./styles.css";
 import useCustomImmer from "./hooks/useCustomImmer";
 import { useEffect } from "react";
 export default function App() {
-  const [value, setValue] = useCustomImmer({
+  const [value, setValue, proxy] = useCustomImmer({
     count: 0,
     name: {
       firstName: "Akashdeep",
@@ -18,6 +18,9 @@ export default function App() {
       prev.name.count += 1;
       prev.name.arr.push(prev.name.arr.length + 1);
     });
+    proxy.count += 1;
+    proxy.name.count += 1;
+    proxy.name.arr.push(proxy.name.arr.length + 1);
   };
   useEffect(() => {
     console.log("render");

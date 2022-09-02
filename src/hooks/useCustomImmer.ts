@@ -52,7 +52,7 @@ const updateNestedValue =<StateType>(object:StateType,path:string[],value:any):S
   return object
 }
 
-export default function useCustomImmer<StateType>(initialValue: StateType):[value:StateType,setter:(func: (value: StateType) => void)=>void] {
+export default function useCustomImmer<StateType>(initialValue: StateType):[value:StateType,setter:(func: (value: StateType) => void)=>void,proxy:StateType] {
   const [value, setValue] = useState<StateType>(initialValue);
 
   const listener =useCallback(debounce((target:Target) => {
@@ -67,5 +67,5 @@ export default function useCustomImmer<StateType>(initialValue: StateType):[valu
     func?.(valueProxy);
   };
   // console.log(JSON.parse(JSON.stringify(valueProxy)))
-  return [value, setterFunction];
+  return [value, setterFunction , valueProxy];
 }
